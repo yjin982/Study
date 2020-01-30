@@ -1,4 +1,4 @@
-package aa.bb.pack4;
+package pack4;
 
 public class PohamCar { //여러개의 부품(클래스)들을 조립해 완성차를 만드는 클래스
 	int speed = 0;

@@ -1,4 +1,4 @@
-package aa.bb.pack4;
+package pack4;
 
 public class PohamCarMain {
 	
