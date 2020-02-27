@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function func1(){
+		document.write("난 func1이야이야이야 <br>");
+	}
+	function func2(a,b){
+		var c = a+b;
+		return c;
+	}
+	function func3(){
+		document.write("argument 수 : ", arguments.length,"<br>");
+		document.write("argument 값 : ", arguments[0]," ",arguments[1]," <br>");
+	}
+	
+	function evenOdd(num){
+		var result = " ";
+		if(num % 2 === 0)
+			result = "짝";
+		else
+			result = "홀";
+		return result;
+	}
+	
+	(function(){
+		document.write("익명 함수 수행<br>");
+	})();
+	
+	var test = function(n1, n2){ //익명함수를 변수에 치환
+		document.write("익명 함수 내의 두 수 합은 ", (n1+n2), "<br>");
+	}
+	test(2,3);
+	var test2 = test;
+	test2(3,4);
+	
+	document.write("■ 선언적 함수와 익명함수의 차이<br>");
+	func4();
+	function func4() {
+		document.write("선언적 함수 호출됨(메모리에 계속 존재)<br>");
+	}
+	func4();
+	
+	//kbs(); //error
+	var kbs = function(){
+		document.write("익명 함수 호출됨(휘발성, 동적)<br>");
+	};
+	kbs();
+	
+	document.write("■ 중첩 함수<br>");
+	function func5(){
+		function fu1(){
+			document.write("fu1 수행<br>");
+		}
+		function fu2(){
+			document.write("fu2 수행<br>");
+		}
+		fu1();
+		fu2();
+		document.write("func5 수행<br>");
+	}
+	//fu1(); //error
+	func5();
+	
+	function outer1(){
+		return function(){
+			document.write("outer return<br>");
+		}
+	}
+	ytn = outer1();
+	ytn();
+	outer1()();
+	
+</script>
+</head>
+<body>
+<hr size="20" color="blue">
+<script type="text/javascript">
+	func1();
+	//my = func1(); //수행 결과를 줌
+	my = func1; // 주소값을 줌
+	my();
+	
+	re = func2(10,20);
+	document.write("re : ", re,"<br>");
+	re = func2("봄", "방학");
+	document.write("re : ", re,"<br>");
+	re = func2("봄", "방학", "만세");
+	document.write("re : ", re,"<br>");
+	
+	func3(1);
+	func3(1,2);
+	func3(1,2,3);
+	func3(1,"일");
+	
+	document.write(evenOdd(1),"<br>");
+	document.write(evenOdd(2),"<br>");
+	
+	
+</script>
+</body>
+</html>

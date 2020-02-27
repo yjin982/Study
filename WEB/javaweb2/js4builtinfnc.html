@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>내장함수</h2>
+<script type="text/javascript">
+	document.write("-- 문자 관련 함수 --<br>");
+	var str = 'Java script Language';
+	document.write(str.charAt(2), "<br>");
+	document.write(str.indexOf('v'), "<br>");
+	document.write(str.substring(1,3), "<br>");
+	document.write(str.length, "<br>");
+	document.write(str.toLowerCase,"<br>");
+	
+	document.write("<p/>-- style 함수-- <br>");
+	document.write(str.bold().fontcolor('#ff0000').fontsize(24), "<br>");
+	document.write(str.big(),"<br>");
+	document.write(str.small(),"<br>");
+	document.write(str.strike(),"<br>");
+	document.write(str.italics(),"<br>");
+	
+	document.write("<br>-- 수학 함수 --<br>");
+	document.write(Math.abs(-5), "<br>");
+	document.write(Math.round(3.5), "<br>");
+	document.write(Math.floor(3.5),"<br>");
+	document.write(Math.ceil(3.5),"<br>");
+	document.write(Math.random(),"<br>");
+	
+	document.write("<br>-- 날짜 함수 --<br>");
+	d = new Date();
+	document.write(d, "<br>");
+	document.write(new Date(), "<br>");
+	document.write(d.getYear(), " ", (d.getMonth()+1), "<br>");
+	document.write(d.getFullYear()," ", (d.getMonth()+1), "<br>");
+	document.write(d.setTime(Date.parse("jan 1, 2000")),"<br>");
+	
+	document.write("<br>-- 기타 함수 --<br>");
+	document.write("3.4"+5, "<br>");
+	document.write((parseInt("3.4")+5),"<br>");
+	document.write((parseFloat("3.4")+5),"<br>");
+	document.write(eval("5+3*2"), "<br>");
+	var ss = encodeURI("자바스크립트");
+	document.write(ss, "<br>");
+	ss = decodeURI(ss);
+	document.write(ss,"<br>");
+	document.write(isNaN("3"), "<br>");
+	document.write(isNaN("삼"), "<br>");
+	
+	open("js1.html", "대화상자", "width=300,height=200,resizeable=yes");
+	
+</script>
+</body>
+</html>

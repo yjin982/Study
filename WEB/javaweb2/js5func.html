@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	//head태그 내에서 선언 후 body 영역에서 호출
+	count = 0;
+	function aa(){
+		count += 1;
+		//return; //함수의 탈출
+		document.write(count, "번 호출<br>");
+	}
+	
+	function bb(){
+		document.write("함수 내에서 함수 호출 가능<br>");
+		cc(7);
+		var re = cc(10);
+		document.write("bb안에서 cc호출로 인한 re(=kk)는 ", re,"<br>");
+		
+		dd(5,10);
+		dd(5); //하나는 undefined
+		dd(5,10,15); //마지막 하나는 무시됨
+	}
+	function cc(arg){
+		var kk = arg + 10;
+		document.write("cc 안에서 kk ", kk, "<br>");
+		return kk;
+	}
+	function dd(arg1, arg2){
+		document.write("dd안에서 arg1 ", arg1,", arg2 ", arg2, "<br>");
+	}
+	
+	function f1(){ //일급함수를 지원(= 함수를 호출하면서 파라미터로 함수를 줄 수도 있고, 함수를 반환할 수도 있다.)
+		document.write("안녕?<br>");
+	}
+	function f2(func){
+		func();
+	}
+	function f3(){
+		//return f1();
+		return f1;
+	}
+	function hi(){
+		f2(f1);
+		//f3();
+		sbs = f3();
+		sbs();
+		
+		f3()(); // 리턴한 함수를 실행
+	}
+</script>
+<script type="text/javascript">
+	a = 10;       //전역 
+	var b = 20; //전역
+	function fu1(){
+		var c = 30;  //지역
+		d = 40;       //전역
+		document.write("a,b,c,d : ", a, " ", b, " ", c, " ", d, "<br>");	
+	}
+	function fu2(){
+		document.write("a,b,c,d : ", a, " ", b, " ", "c ", d, "<br>"); //c만 사용 불가
+	}
+</script>
+</head>
+<body>
+사용자 정의 함수 연습<br>
+<script type="text/javascript">
+	function my(){
+		document.write("body 내에서 선언한 함수<br>");
+	}
+	my();
+</script>
+<br>html작업을 하다가<br>
+<script type="text/javascript">
+	my();
+	aa();
+	aa();
+	aa();
+	document.write("<hr>");
+	bb();
+	document.write("<hr>");
+	//f1; //()가 없으면 주소만 있음, 함수 실행 x
+	/*kbs = bb;
+	kbs();*/
+	f1(); 
+	hi();
+	document.write("<hr>");
+	////////////////////////
+	fu1();
+	fu2();
+</script>
+</body>
+</html>

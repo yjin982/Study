@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function func1(){
+		//alert("a"); //동작확인
+		var tag1 = "이름 : <input type='text' name='irum' />";
+		var tag2 = "나이 : <input type='text' name='nai' />";
+		document.getElementById("test1").innerHTML = tag1;
+		document.getElementById("test2").innerText = tag2; //수행 되기 전 html 문자열이 그대로 찍힘
+		
+	}
+	function func2(){
+		var str1 = "<b style='font-size:24px;'>일반 문자열로 변경</b>";
+		var str2 = "<b style='font-size:24px'>나도 변경</b>"
+		document.getElementById("test1").innerHTML = str1;
+		document.getElementById("test2").innerText = str2;
+		
+		//document.getElementById("show").innerText = "밥먹자";
+		document.getElementById("show").innerHTML = "<h1>밥먹자</h1>";
+	}
+</script>
+</head>
+<body>
+** html 소스 일부 변경 **<br>
+<div id="test1">안녕</div>
+<div id="test2">반가워</div>
+<input type="button" value="처리1" onclick="func1()" />
+<input type="button" value="처리2" onclick="func2()" />
+<hr>
+<div id="show"></div>
+</body>
+</html>

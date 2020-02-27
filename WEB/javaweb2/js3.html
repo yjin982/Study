@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table{
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+tr{
+	background-color: white;
+}
+tr.ev{
+	background-color: yellow;
+}
+td{
+	padding:5px;
+	border: 1px solid black;
+}
+</style>
+</head>
+<body>
+조건판단문 if<br>
+<script type="text/javascript">
+	var su = 10;
+	//var su = prompt("숫자 입력");
+	//alert("입력된 값은 " + su);
+	if(su % 2 === 0){
+		document.write("짝수");
+		document.write("<br>짝");
+	}else{
+		document.write("홀수");
+	}
+</script>
+
+<br>조건판단문 switch<br>
+<script type="text/javascript">
+	var hak = "b";
+	switch(hak.toUpperCase()){
+	case "A": 
+		document.write("매우 우수 : ");
+		document.write(hak);
+		break;
+	case "B":
+	case "C":
+		document.write("우수");
+		break;
+	default:
+			document.write("기타");
+	}
+</script>
+<hr>
+반복문 for<br>
+<script type="text/javascript">
+	for(a=1; a<=5; a++){
+		document.write(a, " <br>");
+	}
+	document.write("반복문 수행 후 a : ", a, "<br>");
+	document.write("<br>");
+	for(a=1; a <= 10; a++){
+		if(a === 3) continue;
+		document.write(a, "<br>");
+		if(a === 5) break;
+	}
+	
+	//문) 2~9까지의 구구단 출력. 단 별로 <tr>을 사용, 짝수단은 tr 배경색은 노랑, css 사용 (internal 방식)
+	
+	var ev="ev";
+	document.write("<table>");
+	for(a = 2; a<10; a++){
+		if(a%2 === 0){
+			document.write("<tr class=",ev,">");
+		}else{
+			document.write("<tr>");
+		}
+		for(b=1; b<10; b++){
+			document.write("<td>" + a + " * " + b + " = " + (a*b) + "</td>");
+		}
+		document.write("</tr>");
+	}
+	document.write("</table>");
+</script>
+<hr>
+반복문 while<br>
+<script type="text/javascript">
+	var a = 0; 
+	while(a<=5){
+		a++;
+		document.write("이해하시죠?");
+		if(a === 2) continue;
+		if(a === 4) break;
+	}
+	document.write("<br>while 수행 후 a:",a, "<br>");
+	
+	var i=0; tot=0;
+	do{
+		i++;
+		tot += i;
+	}while(i <10);
+	document.write("<br>tot:", tot);
+</script>
+<hr>
+-- 배열 -- <br>
+<script type="text/javascript">
+	aa = new Array(3);
+	aa[0] = 100;
+	aa[3] = 200;
+	aa[4] = {a:1, b:2}; 
+	aa[5] = "결과 확인";
+	document.write("<br>", aa[5], " ", aa[0], " ", aa[3], " ", aa[4], "<br>");
+	document.write(aa.length, "<br>");
+	
+	var test = [];
+	test.push(1);
+	test.push(2,3,4.5);
+	document.write(test[3], "<br>");
+	
+	bb = new Array(100, 200, 300);
+	document.write(bb[0], "<br>");
+	
+	cc = new Array();
+	for(k=0; k<10; k++){
+		cc[k] = k+1;
+	}
+	for(k=0; k< cc.length; k++){
+		document.write(cc[k], " ");
+	}
+	document.write("<br>");
+	
+	for(var k in cc){
+		document.write(cc[k], " ");
+	}
+</script>
+</body>
+</html>

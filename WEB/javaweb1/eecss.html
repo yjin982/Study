@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>스타일 적용 연습</title>
+	<!-- Internal style sheet -->
+	<style type="text/css">
+	h1{
+		font-size: 50px; 
+		font-family: 궁서, 돋움, sans-serif;
+		color: red;
+	}
+	p{		font-size: 20px; 	}
+	.c1{ 	color: rgb(0%, 0%, 100%);	}
+	#i1{	
+		color: rgb(255 255 0); 
+		font-style: italic; 
+		font-weight: bold;	
+	}
+	</style>
+	<!-- External style sheet -->
+	<link rel="stylesheet" type="text/css" href="css/ee.css">
+</head>
+<body>
+스타일 적용 - css : inline > internal > external<br>
+<span style="font-size: :30px; color: aqua; ">인라인 방식</span> <br>
+<h1>인터널 방식</h1>
+<h2>안녕하세요</h2>
+<h1>반가워요</h1>
+<p class="c1">클래스 사용1</p>
+<p class="c2">클래스 사용1</p>
+<h2 class="c1">클래스 사용2</h2>
+<p id="i1">아이디 사용(중복 불가)</p>
+<div id="i2">아이디 사용(중복 불가)</div>
+<hr>
+<p class="btnOk">* 입력 양식 *</p>
+<form action="">
+<table>
+	<tr>
+		<td>id</td>
+		<td><input type="text" name="id" id="id" /></td>
+	</tr>
+	<tr>
+		<td>pwd</td>
+		<td><input type="text" name="pwd" id="pwd" /></td>
+	</tr>
+	<tr>
+		<td colspan="2"><input type="button" class="btnOk" value="전송 버튼" /></td>
+	</tr>
+</table>
+</form>
+<a href="http://www.naver.com" >네이버로 고고</a><br>
+
+<i>i tag</i><strong>strong tag</strong><br>
+<b>b tag</b><br>
+<div><b>div-b-tage</b></div>
+<div><span><b>div-span-b-tage</b></span></div>
+<div><b id="hi">div-b id:hi-tage</b></div>
+<div><b class="hi">div-b class:hi-tage</b></div>
+
+<div id="pic">배경 이미지</div>
+<hr>
+<img title="그림" src="images/mouse.png" />
+
+</body>
+</html>

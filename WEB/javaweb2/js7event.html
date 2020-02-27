@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function func(){
+		console.log("good");
+		
+		var data = prompt("날짜 입력", "2020-2-27");
+		var arrData = data.split("-");
+		console.log(arrData[0],"년 ",arrData[1], "월 ", arrData[2], "일");		
+	}
+</script>
+</head>
+<body>
+이벤트 처리<br>
+<a href="javascript:func()">이벤트 처리1</a><br>
+<a href="javascript:;" onclick="func()">이벤트 처리2</a><br>
+<button onclick="func()">이벤트 처리3</button><br>
+<input type="button" onclick="func();" value="이벤트 처리4"/><br>
+
+
+</body>
+</html>

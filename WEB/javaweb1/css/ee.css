@@ -1,0 +1,77 @@
+@charset "UTF-8";
+/* css 주석 */
+
+#i2{
+	background-color: yellow;
+	color: blue;
+	font-size: 24px;	
+}
+table{
+	width: 70%;
+	margin-bottom: 10px;
+}
+table tr td{ /* (테이블이 포함하는 tr이 포함하는)td에게 적용 */
+	padding: 5px 10px;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px dashed blue;
+}
+input{
+	border: 5px double rgb(0, 255, 0);
+	background-color: rgb(100%, 100%, 0%);
+}
+input.btnOk{ /* 클래스는 중복 가능하니까 input태그의 btnOk만 적용되게 */
+	border: 10px solid black;
+	background-color: olive;
+}
+
+/* 동적 선택자 */
+input:focus {
+	background-color: #eed1ff;
+}
+a:link{
+	text-decoration: none;
+}
+a:visited {
+	color: red;
+}
+a:active {
+	color: yellow;
+	font-family: 궁서;
+}
+a:hover{
+	color: cyan;
+	font-size: 30px;
+}
+
+/*  ,   : 동급(i와 strong)*/
+i, strong{
+	margin-right: 20px;
+	color: #ff8157;
+}
+b{
+	font-size: 8px;
+}
+div b{ /*div 안에 b가 있는 경우*/
+	font-size: 16px;
+}
+div > b{ /* div 바로 밑에 b가 있는 경우*/
+	font-size: 24px;
+}
+div span b {
+	font-size: 32px;
+}
+div b#hi{/* div 아래 b 중 id가 hi*/
+	font-size: 40px;
+}
+div b.hi{/* div 아래 b 중 id가 hi*/
+	font-size: 48px;
+}
+
+div#pic{
+	height: 150px;
+	background-image: url('../images/댕댕이.jpg');
+}
+img{
+	border: 3px dotted red;
+}
+
