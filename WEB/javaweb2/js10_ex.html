@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function re(){
+		num1 = document.getElementById("num1").value;
+		num2 = document.getElementById("num2").value;
+		
+		if(isNaN(num1) || isNaN(num2)){
+			alert("숫자만 입력");
+			return;
+		}
+		
+		switch(operator()){
+		case "plus":
+			document.getElementById("result").innerText = Number(num1)+Number(num2);
+			break;
+		case "sub":
+			document.getElementById("result").innerText = num1-num2;
+			break;
+		case "multi":
+			document.getElementById("result").innerText = num1*num2;
+			break;
+		case "divi":
+			if(isFinite(num1/num2)){
+				document.getElementById("result").innerText = num1/num2;
+			}else{
+				alert("0으로 나눌 수 없습니다.");
+			}
+			break;
+		}
+	}
+	
+	function operator(){
+		var r_btn = document.getElementsByName("operator");
+		
+		for(var i = 0; i < r_btn.length; i++){
+			if(r_btn[i].checked === true){
+				return r_btn[i].value;
+			}
+		}
+	}
+
+	function del(){
+		document.getElementById("result").innerText = "";
+		nums = document.getElementsByClassName("num");
+		for(var j = 0; j < nums.length; j++){
+			nums[j].value = "";
+		}
+	}
+</script>
+</head>
+<body>
+
+<h1>간단한 계산기</h1>
+숫자1 : <input type="text" id="num1" class="num"><br> 
+숫자2 : <input type="text" id="num2" class="num"><br><br>
+&nbsp; &nbsp; &nbsp;<input type="Radio" name="operator" value="plus" checked="checked">+ <input type="Radio" name="operator" value="sub">- <input type="Radio" name="operator" value="multi">* <input type="Radio" name="operator" value="divi">/<br>
+<br>
+<input type="button" value="결과" onclick="re()" />	&nbsp;<span id="result"></span><br><br>
+<input type="button" value="지우개" onclick="del()" />
+
+</body>
+</html>

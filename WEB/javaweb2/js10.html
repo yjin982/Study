@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	window.onload = function(){
+		document.getElementById("colorW").onclick = function(){
+			document.bgColor = "white";
+		}
+		document.getElementById("colorG").onclick = function(){
+			document.bgColor = "#0f0";
+		}
+		document.getElementById("colorR").onclick = function(){
+			document.bgColor = "#ff0000";
+		}
+		
+		document.getElementById("hello").onclick = function(){
+			document.getElementById("show").innerText = "안녕하세요";
+		}
+		document.getElementById("calc").ondblclick = function(){
+			var ss = "연산 결과 : " + (10+20); 
+			document.getElementById("show").innerText = ss;
+		}
+		document.getElementById("name").onmouseover = function(){
+			document.getElementById("show").innerText = "당신의 이름은 홍길동";
+		}
+		document.getElementById("name").onmouseout = function(){
+			document.getElementById("show").innerText = "";
+		}
+		
+		document.getElementById("daum").onclick = function(event){
+			//event.preventDefault(); // 태그 고유의 기능을 해제
+			document.getElementById("show").innerText = "다음 만세";
+			return false;  //태그 고유의 기능 해제
+		}
+		
+		var sdata = document.getElementById("sel");
+		//document.getElementById("sel").onclick = function(){ // 값이 그대로여도 클릭 될 때마다 이벤트가 발생
+		document.getElementById("sel").onchange = function(){	// 값이 바뀔때만 이벤트가 발생
+			document.getElementById("show").innerText = sdata.value;
+		}
+		
+		my();
+	}
+		
+	var msg = "자바스크립트세상";
+	var i = 0;
+	function my(){
+		document.getElementById("display").innerText = msg.charAt(i);
+		i++;
+		if(msg.length === i) i = 0;
+		setTimeout("my()", 500); // 0.5초마다 한번씩 my(자신)를 호출
+	}
+</script>
+</head>
+<body>
+* 이벤트 경험 *<br>
+<input type="button" value="흰색" id="colorW">
+<!-- <input type="button" value="녹색" id="colorG">
+<input type="button" value="적색" id="colorR">-->
+<span id="colorG">녹색 </span><b style="border:1px solid black;" id="colorR">적색</b><br><br>
+
+<button id="hello">인사하기(click)</button>
+<button id="calc">계산하기(double click)</button>
+<button id="name">이름알기(mouse over)</button><br><br>
+
+<a href="http://m.daum.net" id="daum" target="_blank">앵커 클릭</a>
+<select id="sel">
+	<option value="프로그래머">프로그래머</option>
+	<option value="웹디자이너">웹디자이너</option>
+	<option value="프로게이머">프로게이머</option>
+</select><br><br>
+
+
+
+<hr>
+<div id="show"></div>
+<div id="display" style="font-size:30px;"></div>
+</body>
+</html>
