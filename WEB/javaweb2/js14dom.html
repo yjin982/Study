@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function abc(){
+	var my = document.getElementById("my");
+	alert(my.nodeName + " " + my.childNodes[0].nodeValue + " " + my.firstChild.nodeValue);
+	alert(my.getAttribute("comments"));
+}
+
+function def(){
+	var arr = document.getElementsByTagName("input");
+	alert("검색 요소 수 : " + arr.length);
+	alert(arr[0].getAttribute("value") + "\n" + arr[1].getAttribute("value"));
+}
+
+function process(arg){
+	var ele = document.createElement("i"); // <i></i>생성
+	var headerText = document.createTextNode(arg); //텍스트노드 = 엘리먼트 안의 값 <>(요기값)</>
+	ele.appendChild(headerText); // <i>안녕</i>
+	
+	document.getElementById("disp").appendChild(ele); //<div id="disp">출력 장소<i>안녕</i></div>
+}
+
+function cle(){
+	var re = document.getElementById("disp");
+	//re.removeChild(re.childNodes[0]); //하나씩 삭제
+	while(re.hasChildNodes()){
+		re.removeChild(re.childNodes[0]);
+	}
+}
+</script>
+</head>
+<body>
+<h2 id="my" comments="이건 속성">DOM 객체 참조</h2>
+<input type="button" value="id 검색" onclick="abc()" /><br>
+<input type="button" value="element 검색" onclick="def()" /><br>
+<h2>요소 생성 및 삭제</h2>
+<input type="button" value="요소 생성1" onclick="process('안녕')" /><br>
+<input type="button" value="요소 생성2" onclick="process('반가워')" /><br>
+<input type="button" value="요소 삭제" onclick="cle()" /><br>
+<br><hr>
+<div id="disp">출력 장소</div>
+</body>
+</html>

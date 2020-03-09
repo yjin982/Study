@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function() {
+	//document.getElementById("btnCalShow").onclick = func;
+	//document.getElementById("btnCalShow").addEventListener("click", func);
+	document.getElementById("btnCalShow").addEventListener("click", func, false); //true/false가 걸린 경우가 있는데 이는 이벤트(캡처링,버블링)
+
+	document.getElementById("btnPyear").addEventListener("click", btnc, false);
+	document.getElementById("btnNyear").addEventListener("click", btnc, false);
+	document.getElementById("btnPmonth").addEventListener("click", btnc, false);
+	document.getElementById("btnNmonth").addEventListener("click", btnc, false);
+}
+
+// 년,월,일 변수를 전역으로 빼니까 됨 ;;
+var now = new Date();
+var year = now.getFullYear();
+var month = now.getMonth();
+var day = now.getDate();
+var str = "";
+
+function func(){
+	//해당 달의 1일은 무슨 요일?
+	var setDate = new Date(year, month, 1);
+	var firstDay = setDate.getDate();
+	var yoil = setDate.getDay(); // 0(일) ~ 6(토)
+
+	//해당 달의 날 수?
+	var nalsu = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
+	if(year % 4 === 0 && year % 100 !== 0 || year % 400 ===0)
+		nalsu[1] = 29; //윤년 체크
+
+	kbs(yoil, nalsu[month], year, (month+1), day);
+	document.getElementById("disp").innerHTML = str;
+	document.getElementById("etc").style.display = ""; //버튼 등장
+	
+}
+
+function btnc(){
+	if(event.target.id === "btnPyear"){
+		year = year-1;
+		func();
+	}
+	if(event.target.id === "btnNyear"){
+		year = year+1;
+		func();
+	}
+	if(event.target.id === "btnPmonth"){
+		month = month-1;
+		func();
+	}
+	if(event.target.id === "btnNmonth"){
+		month = month+1;
+		func();
+	}
+}
+
+
+function kbs(yoil, nalsu, year, month, day){
+	str = "<table>";
+	str += "<tr><th colspan='7' width='250'>" + year + "년 " + month + "월</th></tr>";
+	str += "<tr>";
+	var week = new Array("일", "월", "화", "수", "목", "금", "토");
+	for(var i=0; i < week.length; i++){
+		str += "<th>" + week[i] + "</th>";
+	}
+	str += "</tr>";
+	
+	//날수 채우기
+	var no = 1;
+	var currentCell = 0;
+	var ju = Math.ceil((nalsu+yoil) / 7);
+	//alert("이번 달은 " + ju + "주");
+	for(var r=0; r < ju; r++){
+		str += "<tr style='text-align:center'>";
+		for(var col=0; col < 7; col++){
+			if(currentCell < yoil || no > nalsu){
+				str += "<td>&nbsp;</td>";
+				currentCell++;
+			}else {
+				//오늘 날짜이면 다른 색으로 표시
+				if(no === day){ 
+					str += "<td style='color:cyan; font-weight:bold; '>" + no + "</td>";	
+				}else{
+					str += "<td>" + no + "</td>";					
+				}
+				no++;
+			}
+		}
+		str += "</tr>";
+	}
+	str += "</table><p/>";
+}
+</script>
+</head>
+<body>
+나만의 달력<p/>
+<button id="btnCalShow">달력 보기</button><br><br>
+
+<div id="disp"></div>
+<div id="etc" style="display: none">
+	<button id="btnPyear">이전 년</button>
+	<button id="btnPmonth">이전 월</button>
+	<button id="btnNmonth">다음 월</button>
+	<button id="btnNyear">다음 년</button>
+</div>
+
+
+</body>
+</html>

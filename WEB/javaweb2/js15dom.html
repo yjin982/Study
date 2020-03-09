@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){    // callback function
+	//제목 출력
+	var h = document.createElement("h1");
+	var msg = document.createTextNode("결과 보기");
+	h.append(msg);   // <h1>결과 보기</h1>
+	document.getElementById("header").appendChild(h);
+	
+	document.getElementById("sel").onchange = function(){
+		var sangpum = comment = "";
+		
+		var sel = frm.sel.options[frm.sel.selectedIndex].value;
+		var sang = frm.sel.options[frm.sel.selectedIndex].text;
+		if(sel === "10"){
+			sangpum = sang;
+			comment = "시원하고 부드러운 늑힘";
+		}else if(sel === "20"){
+			sangpum = sang;
+			comment = "달콤하고 아름다운 늑힘";
+		}else if(sel === "30"){
+			sangpum = sang;
+			comment = "깔끔하고 신비스러운 늑힘";
+		}
+		addTr(sangpum, comment);
+		
+		document.getElementById("myTable").setAttribute("border", "1");
+		document.getElementById("myTable").setAttribute("width", "400");
+	}
+}
+
+function addTr(sangpum, comment){
+	var row = document.createElement("tr"); // <tr></tr>
+	var col = addTd(sangpum);    
+	row.appendChild(col);    // <tr><td>상품명</td></tr>
+	var col = addTd(comment);    
+	row.appendChild(col);   // <tr><td>상품명</td><td>코멘트</td></tr>
+	
+	document.getElementById("myTbody").append(row);
+}
+function addTd(data){
+	var col = document.createElement("td");
+	var text = document.createTextNode(data);
+	col.appendChild(text);
+	return col;	
+}
+</script>
+</head>
+<body>
+<h2>** 요소 처리 **</h2>
+<form action="#" name="frm">
+	상품 선택&nbsp; : &nbsp;
+	<select name="sel" id="sel">
+		<option value="">선택</option>
+		<option value="10">아이스 커피</option>
+		<option value="20">카라멜 마끼아또</option>
+		<option value="30">콜드브루</option>	
+	</select>
+</form>
+<br>
+<span id="header"></span><br>
+<table id="myTable" >
+	<tbody id="myTbody"></tbody>
+</table>
+</body>
+</html>

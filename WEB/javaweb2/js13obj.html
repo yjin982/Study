@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+//객체 선언 방법
+window.onload = function(){
+	//1. new 연산자 사용
+	var obj1 = new Object();   // === var obj1 = {};
+	obj1.irum = "홍길동";
+	obj1.nai = 23;
+	obj1.juso = "강남구 역삼동";
+	obj1.getjuso = function(){
+		return obj1.juso;
+	}
+	a = typeof(obj1);
+	document.getElementById("disp1").innerHTML = a;
+	var str1 = obj1.irum + "님의 나이는 " + obj1.nai + "이고 주소는 " + obj1.juso + " / " + obj1.getjuso();
+	document.getElementById("disp1").innerHTML = str1;
+	
+	var obj2 = obj1;
+	obj2.irum = "고길동";
+	var str2 = obj2.irum + "님의 나이는 " + obj2.nai + "이고 주소는 " + obj2.juso + " / " + obj2.getjuso();
+	document.getElementById("disp2").innerHTML = str2;
+	
+	
+	//2. literal 사용
+	var myObj = {
+		irum : "신선해",
+		nai : 25,
+		showNai : function(msg){
+			return this.nai + msg;
+		}
+	};
+	var str3 = myObj.irum + "님의 나이는 " + myObj.nai + " / " + myObj.showNai("살");
+	document.getElementById("disp3").innerHTML = str3;
+	yourObj = myObj;
+	var str4 = yourObj.irum + "님의 나이는 " + yourObj.nai + " / " + yourObj.showNai("살");
+	document.getElementById("disp4").innerHTML = str4;
+	
+	
+	//중첩 객체
+	var myFriend = {
+			name : '신기루',
+			age : 33,
+			otherFriend : {
+				name : '김밥',
+				job : '프로그래머'
+			}
+	};
+	var str5 = myFriend.name + "님의 나이는 " + myFriend.age + ", 다른 친구 " + myFriend.otherFriend.name + "님의 직업은 " + myFriend.otherFriend.job	;
+	document.getElementById("disp5").innerHTML = str5;
+	
+	
+	//3. 생성자 함수 사용
+	function Person(name){
+		this.name = name;
+		this.setName = function(newName){
+			this.name = newName;
+		}
+	}
+	
+	var pp = new Person("손오공");
+	document.getElementById("disp6").innerHTML = pp.name;
+	
+	Person.prototype.jik = '대리';    // prototype : 객체에 대한 전역(static) 멤버 작성
+	Person.prototype.getName = function(){
+		return this.name;
+	}
+	
+	var p1 = new Person("저팔계");
+	var p2 = new Person("사오정");
+	var str7 = p1.getName() + " " + p2.getName() + " / " + p1.jik + " " + p2.jik;
+	document.getElementById("disp7").innerHTML = str7;
+	
+}
+</script>
+</head>
+<body>
+객체 생성 후 처리<br>
+<div id="disp1"></div>
+<div id="disp2"></div>
+<div id="disp3"></div>
+<div id="disp4"></div>
+<div id="disp5"></div>
+<div id="disp6"></div>
+<div id="disp7"></div>
+<div id="disp8"></div>
+</body>
+</html>

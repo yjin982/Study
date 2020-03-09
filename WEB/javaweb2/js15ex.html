@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+window.onload = function(){
+	
+	document.getElementById("sel").onchange = function(){
+		var sel = frm.sel.options[frm.sel.selectedIndex].text;
+		
+		var h = document.createElement("th");
+		var msg = document.createTextNode(sel+"단");
+		h.append(msg);
+		document.getElementById("result").appendChild(h);
+		
+		for(var i=1; i<10; i++){
+			addTr(sel,i);
+		}
+	}
+	
+	document.getElementById("del").addEventListener("click", clc);
+	
+}
+function addTr(dan,i){
+	var row = document.createElement("tr"); // <tr></tr>
+	var col = addTd(dan, i);   // <td>2 * 1 = 2</td>
+	row.appendChild(col);		// <tr><td>2 * 1 = 2</td></tr>
+	
+	document.getElementById("result").append(row);
+}
+
+function addTd(data, i){
+	var str = data + " * " + i + " = " + (data*i); // 2 * 1 = 2
+	var col = document.createElement("td"); // <td></td>
+	var text = document.createTextNode(str); // str
+	col.appendChild(text); // <td>2 * 1 = 2</td>
+	
+	return col;	
+}
+
+function clc(){
+	var re = document.getElementById("result");
+	while(re.hasChildNodes()){
+		re.removeChild(re.childNodes[0]);
+	}
+}
+
+</script>
+</head>
+<body>
+<h2>구구단 출력</h2>
+<form action="#" name="frm">
+	단 선택&nbsp; : &nbsp;
+	<select name="sel" id="sel">
+		<option value="">선택</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+		<option value="6">6</option>
+		<option value="7">7</option>
+		<option value="8">8</option>
+		<option value="9">9</option>	
+	</select>
+	&nbsp;
+	<button id="del">삭제</button>
+</form>
+<br>
+<table id="gugudan" >
+	<tbody id="result"></tbody>
+</table>
+</body>
+</html>

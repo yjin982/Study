@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/js11.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	document.getElementById("btnSend").onclick = chkData;
+	document.getElementById("btnClear").onclick = clsData;
+}
+</script>
+</head>
+<body>
+
+** 입력처리 (오류 검사) **<br>
+<!-- <form action="js11form.jsp" method="get" name="frm"> -->
+<form name="frm">
+이름 : <input type="text" name="name"><br>
+아이디 : <input type="text" name="id" placeholder="2자 이상"> <br>
+이메일 : <input type="email" name="email" value="aa@abc.com"><br>
+나이 : <input type="number" name="age" maxlength="2"><p/>
+<input type="button" id="btnSend" value="자료 전송"><input type="reset" id="btnClear" value="내용 삭제"><br>
+</form>
+
+</body>
+</html>
