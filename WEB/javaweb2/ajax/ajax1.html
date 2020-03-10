@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("btnOk").onclick = function(){
+		startXhr();
+	}
+}
+
+//Ajax 처리
+var xhr;
+
+function createXhr(){
+	if(window.ActiveXObject){
+		//cross browsing
+		xhr = new ActiveXObject("Msxml2.XMLHTTP"); // IE8이하 버전
+	}else if(window.XMLHttpRequest){
+		xhr = new XMLHttpRequest();
+	}
+}
+
+function startXhr(){
+	createXhr();
+	
+	xhr.open('get', 'a1_aa.txt', true); //비동기 방식으로 a1_aa.txt파일을 xhr로 받기위해 get으로 요청 
+	xhr.onreadystatechange = function(){ //이벤트가 발생하면
+		//alert(xhr.readyState); //통신상태 확인 0: 초기화이전(uninitialized) 1: 로딩중(loading) 2: 로딩완료(loaded) 3: 서버 처리중(interactive) 4: 처리완료(completed)
+		if(xhr.readyState == 4){
+			//alert("통신상태 양호");
+			//alert(xhr.status); //status 속성값	200: 성공		403: 접근거부		404: 파일 없음	500: 서버 내부 오류
+			if(xhr.status == 200){
+				//alert("요청 성공(Ajax 정상 처리 기대)");
+				process();
+			}else {
+				alert("요청 실패 : " + xhr.status); 
+			}
+		}
+	}
+	xhr.send(null); //get방식이라 null
+}
+
+function process(){
+	var data = xhr.responseText;
+	//document.getElementById("disp").innerText = data;
+	var my = document.createTextNode(data);
+	document.getElementById("disp").appendChild(my);
+}
+</script>
+</head>
+<body>
+ajax 연습<br>
+<button id="btnOk">gogo</button><br>
+<div id="disp"></div>
+</body>
+</html>

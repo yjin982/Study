@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list>
+	<item>
+		<code price="25000">10</code>
+		<sang>js 이해</sang>
+	</item>
+	<item>
+		<code>20</code>
+		<sang>자바 고수</sang>
+	</item>
+	<item>
+		<code>30</code>
+		<sang>데이터베이스 응용</sang>
+	</item>
+	
+</list>

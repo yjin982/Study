@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("btnXml").onclick = function(){
+		startXhr1();
+	}
+	document.getElementById("btnJson").onclick = function(){
+		startXhr2();
+	}
+	document.getElementById("btnJson2").onclick = function(){
+		startXhr2_1();
+	}
+}
+
+
+//Ajax 처리
+var xhr;
+
+
+function startXhr1(){
+	xhr = new XMLHttpRequest();
+	xhr.open('get', 'a2_aa.xml', true);
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200)
+				processXml();
+			else
+				alert("요청 실패 : " + xhr.status); 
+		}
+	}
+	xhr.send(null); 
+}
+function startXhr2(){
+	xhr = new XMLHttpRequest();
+	xhr.open('get', 'a2_bb.json', true); // true:비동기, false:동기
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200)
+				processJson();
+			else
+				alert("요청 실패 : " + xhr.status); 
+		}
+	}
+	xhr.send(null); 
+}
+function startXhr2_1(){
+	xhr = new XMLHttpRequest();
+	xhr.open('get', 'http://openapi.seoul.go.kr:8088/sample/json/SeoulLibraryTime/1/5/', true);
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200)
+				processJson2();
+			else
+				alert("요청 실패 : " + xhr.status); 
+		}
+	}
+	xhr.send(null); 
+}
+
+
+
+//process
+function processXml(){
+	//var data = xhr.responseText;   // 텍스트 형식으로 읽기 - DOM 사용 불가, xml객체로 파싱 x
+	//document.getElementById("dispXml").innerText = data;
+	
+	var data = xhr.responseXML;   // xml객체 형식으로 읽기 - DOM 사용 가능
+	var itemNode = data.getElementsByTagName("item");
+	var codeNode = data.getElementsByTagName("code");
+	var sangNode = data.getElementsByTagName("sang");
+	
+	var str = "";
+	for(var i=0; i<itemNode.length; i++){
+		str += codeNode[i].firstChild.nodeValue + " | "; 
+		str += sangNode[i].childNodes[0].nodeValue + " / ";
+		str += codeNode[i].getAttribute("price");
+		str += "<br>";
+	}
+	document.getElementById("dispXml").innerHTML = str;
+}
+function processJson(){
+	var data = xhr.responseText;  // xml 이외의 data 읽기
+	//document.getElementById("dispJson").innerHTML = data;
+	
+	var parseData = JSON.parse(data);//json객체화 시키기
+	
+	var str = "";
+	for(var i=0; i<parseData.item.length; i++){
+		str += parseData.item[i].code + " | " + parseData.item[i].sang + "<br>";
+	}
+	document.getElementById("dispJson").innerHTML = str;
+}
+function processJson2(){
+	var data = xhr.responseText; 
+	var parseData = JSON.parse(data);
+	
+	var str = "<table>";
+	for(var i=0; i<parseData.SeoulLibraryTime.row.length; i++){
+		str += "<tr><td>" + parseData.SeoulLibraryTime.row[i].LBRRY_NAME + "</td>";
+		str += "<td>" + parseData.SeoulLibraryTime.row[i].ADRES + "</td>";
+		str += "<td>" + parseData.SeoulLibraryTime.row[i].TEL_NO + "</td></tr>";
+	}
+	
+	str += "</table>";
+	document.getElementById("dispJson2").innerHTML = str;
+}
+</script>
+</head>
+<body>
+ajax 연습<br>
+<button id="btnXml">xml 읽기</button><br>
+<div id="dispXml"></div>
+<hr>
+<button id="btnJson">json 읽기</button><br>
+<div id="dispJson"></div>
+<hr>
+<button id="btnJson2">json 읽기2</button><br>
+<div id="dispJson2"></div>
+</body>
+</html>

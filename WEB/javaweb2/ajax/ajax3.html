@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("btnOk").onclick = function(){
+		gogoAjax();
+	}
+}
+
+var xhr;
+function gogoAjax(){
+	xhr = new XMLHttpRequest();
+	xhr.open("get", "a3xml.jsp",true);   // jsp 파일로 부터 json, xml, csv 따위의 부분 자료를 원함
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				processFunc();
+			}else{
+				alert("요청 실패" + xhr.status);
+			}
+		}
+	}
+	
+	xhr.send(null);
+}
+
+function processFunc(){
+	var data = xhr.responseXML;
+	
+	var sangpumNode = data.getElementsByTagName("sangpum");
+	var codeNode = data.getElementsByTagName("code");
+	var sangNode = data.getElementsByTagName("sang");
+	var suNode = data.getElementsByTagName("su");
+	var danNode = data.getElementsByTagName("dan");
+	
+	var str = "<table>";
+	str += "<tr><th>코드</th><th>상품명</th><th>수량</th><th>단가</th></tr>";
+	for(var i=0; i<sangpumNode.length; i++){
+		str += "<tr>";
+		str += "<td>" + codeNode[i].childNodes[0].nodeValue + "</td>";
+		str += "<td>" + sangNode[i].firstChild.nodeValue + "</td>"; // 같은값
+		str += "<td>" + suNode[i].childNodes[0].nodeValue + "</td>";
+		str += "<td>" + danNode[i].childNodes[0].nodeValue + "</td>";
+		str += "</tr>";
+	}
+	str += "</table>";
+	document.getElementById("disp").innerHTML = str;
+}
+</script>
+</head>
+<body>
+Ajax 처리 (DB 자료 출력)<br>
+<button id="btnOk">XML 상품 자료 읽기</button><br>
+<div id="disp"></div>
+</body>
+</html>
