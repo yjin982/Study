@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<style type="text/css">
+.focused {
+	background-color: #3f1099;
+}
+</style>
+<script>
+$(document).ready(function(){
+	$("label").css("color", "rgb(240,100,180)");
+	$("h1").css({"color":"rgb(100,180,240)", "text-decoration":"underline"}); //css 복수 적용
+	$("#message").wrap("<h2/>"); //h2로 대상을 매핑(<h2><div id=message>대상</div></h2>)
+	
+	//이벤트 
+	/*
+	$("input").focus(function(){ // input에 포커스 이벤트가 발생하면(input이 포커스를 가지면, 이거만 쓰면 포커스 잃은 후에도 지속)
+		$(this).addClass("focused");
+	});
+	*/
+	$("input").on("focus", function(){ // 여러개의 이벤트를 쓸 수 있음
+		$(this).addClass("focused");
+	});
+	
+	$("input").on("blur", function(){ // 포커스를 잃었을 때, remove 
+		$(this).removeClass("focused");
+	});
+	
+	$("#frm").submit(function(event){
+		event.preventDefault();   //원래 고유의 이벤트 기능 해제 후 다른 기능으로 기술 가능
+		//alert("abc");
+		
+		var newEle = "<li>" + $("#data").val() + "</li>"; //id가 data인 엘리먼트의 값을 읽어서 li로 감쌈
+		$("#disp").append(newEle);
+	});
+	
+	$("a").click(function(event){
+		event.preventDefault();
+		alert("다른 일 하기");
+	});
+});
+
+</script>
+</head>
+<body>
+<h1>jQuery 메소드 실습</h1>
+<div id="message">이벤트</div>
+
+<form action="#" id="frm">
+	<label for="data">자료 입력 : </label>
+	<input type="text" id="data"> &nbsp; <input type="submit" value="확인">
+</form>
+<ul id="disp"></ul>
+<p/>
+<a href="http://www.naver.com">naver</a>
+</body>
+</html>

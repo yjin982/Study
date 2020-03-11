@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.korea{   font-size: 50px;   }
+</style>
+<!-- jQuery lib 설치 방법1 직접 설치 -->
+<!-- 
+<script src="../js/jquery-3.4.1.js"></script>
+ -->
+<!-- jQuery lib 설치 방법2 CDN -->
+<!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script> -->
+<script src="http://code.jquery.com/jquery-latest.js"></script> <!-- 버전 안 써도 됨 -->
+
+<script type="text/javascript">
+//window.onload = function (){} //제이쿼리 안 쓸때
+$(document).ready(function(){ //$ 대신 jQuery 써도 됨($가 다른 언어에서 예약어 일 경우)
+	//alert("a"); //테스트
+	$("*").css("border", "1px solid rgb(250,170,170)"); //모든 셀렉터에 대해서 css 적용
+	$("span").css("border", "3px dotted blue");
+	jQuery("#content").css("background-color","cyan");
+	$(".my").css("border", "5px solid rgb(250, 220, 100)");
+	$("i > .my").css("color", "red"); // i의 자식에게 적용
+});
+
+
+//$(document).ready(function(){ //2번 써도 괜찮
+$(function(){ // =같음
+	$(".kor").css("color","rgb(100,200,100)").addClass("korea"); //위에서 적용안되는 .korea 스타일을 이렇게 적용가능
+});
+</script>
+</head>
+<body>
+<h2>jQuery 연습</h2>
+<p class="my">화창한 날씨</p>
+<div>
+	<div id="content">공기도 매우 좋음</div>
+</div>
+<b>점심을 먹으니 나른하군</b><br>
+<span>강남 거리</span>
+<i><span class="my">시원한 바람</span></i><br>
+<b class="kor">대한민국 만세</b>
+</body>
+</html>

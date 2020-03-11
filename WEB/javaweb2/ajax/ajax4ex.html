@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("btnxml").onclick = function(){
+		AjaxXml();
+	}
+	document.getElementById("btnjson").onclick = function(){
+		AjaxJson();
+	}
+	
+}
+
+function rdo(){
+	var rbtn = document.getElementsByName("gen");
+	for(var i = 0; i < rbtn.length; i++){
+		if(rbtn[i].checked === true){
+			return rbtn[i].value;
+		}
+	}
+}
+
+var xhr;
+function AjaxXml(){
+	xhr = new XMLHttpRequest();
+	var url = "ajax4exXml.jsp?gen="; 
+	url += rdo();
+	xhr.open("get", url, true);
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				processXml();
+			}else{
+				alert("요청 실패" + xhr.status);
+			}
+		}
+	}
+	xhr.send(null);
+}
+function AjaxJson(){
+	xhr = new XMLHttpRequest();
+	var url = "ajax4exJson.jsp?gen="; 
+	url += rdo();
+	xhr.open("get", url, true);
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				processJson();
+			}else{
+				alert("요청 실패" + xhr.status);
+			}
+		}
+	}
+	xhr.send(null);
+}
+
+
+
+function processXml(){
+	var data = xhr.responseXML;
+	var cnt = 0;
+
+	var jikwon = data.getElementsByTagName("jikwon");
+	var jno = data.getElementsByTagName("no");
+	var jname = data.getElementsByTagName("name");
+	var jjik = data.getElementsByTagName("jik");
+	var jgen = data.getElementsByTagName("gen");
+	
+	var str = "<table border='1' style='border-collapse:collapse; width:400px; border:1px solid blue;'>";
+	str += "<tr><th>사번</th><th>이름</th><th>직급</th><th>성별</th></tr>";
+	for(var i=0; i < jikwon.length; i++){
+		str += "<tr>";
+		str += "<td>" + jno[i].childNodes[0].nodeValue + "</td>";
+		str += "<td>" + jname[i].childNodes[0].nodeValue + "</td>";
+		str += "<td>" + jjik[i].childNodes[0].nodeValue + "</td>";
+		str += "<td>" + jgen[i].childNodes[0].nodeValue + "</td>";
+		str += "</tr>";
+		cnt++;
+	}
+	str += "</table>";
+
+	document.getElementById("jikwon").innerHTML = str;
+	document.getElementById("count").innerText = "건수 : " + cnt;
+}
+
+function processJson(){
+	var data = xhr.responseText;
+	var parseData = JSON.parse(data);
+	var cnt = 0;
+	
+	var str = "";
+	str += "<table border='1' style='border-collapse:collapse; width:400px; border:1px solid red;'>";
+	str += "<tr><th>사번</th><th>이름</th><th>직급</th><th>성별</th></tr>";
+	for(var i=0; i < parseData.jikwon.length; i++){
+		str += "<tr>";
+		str += "<td>" + parseData.jikwon[i].no + "</td>";
+		str += "<td>" + parseData.jikwon[i].name + "</td>";
+		str += "<td>" + parseData.jikwon[i].jik + "</td>";
+		str += "<td>" + parseData.jikwon[i].gen + "</td>";
+		str += "</tr>";
+		cnt++;
+	}
+	str += "</table>";
+	
+	document.getElementById("jikwon").innerHTML = str;
+	document.getElementById("count").innerText = "건수 : " + cnt;
+}
+</script>
+</head>
+<body>
+<h1>직원 보기</h1>
+<span>
+	<input type="radio" name="gen" value="all" checked="checked">전체</input>
+	<input type="radio" name="gen" value="m">남</input>
+	<input type="radio" name="gen" value="f">여</input>
+</span>&nbsp&nbsp
+<button id="btnxml">xml</button>&nbsp  &nbsp<button id="btnjson">json</button><p/>
+<div id="jikwon"></div><p/>
+<div id="count">건수 : </div>
+</body>
+</html>

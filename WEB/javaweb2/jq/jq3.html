@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+function tdclick(arg) { //과거의 일반적인 경우
+	alert(arg);
+}
+
+$(document).ready(function(){
+	$("td").click(function(){
+		alert($(this).text());
+	});
+	
+	$("div").dblclick(function() {
+		alert("aa");
+	});
+	
+	$("#txtA").keydown(function(event) {
+		$("#txtB").val(event.keyCode);
+	});
+	
+	// on, bind : 확장성이 있는 이벤트 관련 메소드
+	$("#btn").bind("click", function(){
+		alert("버튼 이벤트 발생");
+		
+		$("#btn").unbind("click"); //이벤트 해제
+	});
+	
+	var count = 0;
+	$("#myArea").bind("mouseenter mouseleave", function(event){ // 마우스 over, out
+		count++;
+		$("#mResult").text(count + " enter or leave");
+		
+		
+		if(event.type === "mouseenter"){
+			$("#mResult").css("background", "red");
+		}else if(event.type === "mouseleave"){
+			$("#mResult").css("background", "yellow");
+		}
+	});
+	
+});
+</script>
+</head>
+<body>
+** 이벤트 연습 **<br>
+<table border="1" style="border-collapse: collapse;">
+	<tr>
+		<td onclick="tdclick('오늘도 무사히');">kbs</td>
+		<td>mbc</td>
+		<td>sbs</td>
+	</tr>
+</table> <br>
+<div>더블 클릭 대상</div> <br>
+키보드 이벤트 문자 입력 : <br>
+<input type="text" id="txtA" /> &nbsp;&nbsp;
+<input type="text" id="txtB" /> <br><br>
+<input type="button" id="btn" value="bind 이벤트" /> <br><br>
+<span id="myArea" style="background-color: yellow">마우스 올리고 내리기 : <b id="mResult"></b></span>
+</body>
+</html>

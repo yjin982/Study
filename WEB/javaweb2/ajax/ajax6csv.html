@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+window.onload = function(){
+	document.getElementById("btnOk").onclick = getFunc;
+}
+
+var xhr = null;
+
+function getFunc(){
+	xhr = new  XMLHttpRequest();
+	xhr.open("get", "ajax6.txt", true);
+	
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState == 4){
+			if(xhr.status == 200){
+				processGet();
+			}else{
+				alert("err : " + xhr.status);
+			}
+		}
+	}
+	xhr.send(null);
+}
+
+function processGet(){
+	var data = xhr.responseText;
+	var rowData = data.split(String.fromCharCode(13));    // 행 구분 엔터(cr)로
+	
+	var str = "";
+	for(var i=0; i<rowData.length; i++){
+		var colData = rowData[i].split(",");  // 열 구분 콤마(,)로
+		
+		for(var j=0; j<colData.length; j++){
+			str += colData[j] + "&nbsp;&nbsp;&nbsp;";	
+		}
+		str += "<br>";
+	}
+	document.getElementById("show").innerHTML = str;
+}
+</script>
+</head>
+<body>
+csv Test <br>
+<button id="btnOk" >csv</button><br>
+<div id="show"></div>
+</body>
+</html>
