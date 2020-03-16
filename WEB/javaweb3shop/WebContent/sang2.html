@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("btnOk").onclick = () =>{
+		frm.submit();
+	}
+	
+}
+
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td><img src="images/s2.jpg" width="500"></td>
+		<td>
+			<pre>
+상품번호 : 3430094239
+
+나이키 H86 퓨추라 워시드 볼캡 블랙 모자 913011-010 남여공용사이즈
+20,800원 &nbsp;&nbsp;7%할인 적용가 19,300원 
+
+배송방법 택배
+배송비2,500원 (제주 추가 3,000원, 제주 외 도서지역 추가 5,000원) 
+배송비 절약상품 보기
+배송비결제 주문시 결제
+옵션&nbsp;모델명 &nbsp;사이즈
+
+리뷰수 : 19 &nbsp; 사용자 총 평점 : 4.7/5.0
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form action="Cart" name="frm" method="post">
+				<input type="hidden" name="name" value="모자b100">
+				<input type="hidden" name="price" value="20800">
+				<input type="button" id="btnOk" value="장바구니에 물건담기">
+				<input type="button" id="btnCancel" value="홈으로" onclick="history.back()">
+			</form>
+		</td>
+	</tr>
+
+</table>
+</body>
+</html>

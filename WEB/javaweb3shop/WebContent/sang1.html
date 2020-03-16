@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("btnOk").onclick = () =>{
+		frm.submit();
+	}
+	
+}
+
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td><img src="images/s1.jpg" width="500"></td>
+		<td>
+			<pre>
+닌텐도 스위치
+최저479,800원&nbsp;
+디지털/가전&nbsp;>&nbsp;게임기/타이틀&nbsp;>&nbsp;휴대용게임기
+터치 : 정전식&nbsp;|&nbsp;최대사용 : 약2.5~6.5시간&nbsp;|&nbsp;해상도 : 1280x720p&nbsp;|&nbsp;네트워크 : 유선랜,무선랜n,블루투스4.0&nbsp;
+품목 : 게임기&nbsp;|&nbsp;형태 : 휴대및거치형&nbsp;|&nbsp;메모리 : 내장메모리(32GB)&nbsp;|&nbsp;탑재센서 : 가속도, 자이로, 조도&nbsp;|&nbsp;무게 : 398g&nbsp;|&nbsp;6.2인치
+
+리뷰&nbsp;&nbsp;별점 3,925&nbsp; &nbsp;등록일 2016.11.&nbsp; &nbsp;찜하기2,010
+			</pre>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<form action="Cart" name="frm" method="post">
+				<input type="hidden" name="name" value="스위치a100">
+				<input type="hidden" name="price" value="479800">
+				<input type="button" id="btnOk" value="장바구니에 물건담기">
+				<input type="button" id="btnCancel" value="홈으로" onclick="history.back()">
+			</form>
+		</td>
+	</tr>
+
+</table>
+</body>
+</html>
