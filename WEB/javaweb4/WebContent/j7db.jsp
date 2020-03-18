@@ -22,32 +22,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>* 상품자료(jsp:Beans X)</h2>
+<h2>* 상품자료(jsp:Beans X) *</h2>
 <table border="1" style="border-collapse: collapse;">
 	<tr>
 		<th>code</th><th>sang</th><th>su</th><th>dan</th>
 	</tr>
-<%
-	try{
-		rs = pstmt.executeQuery();
-		while(rs.next()){
-%>
-		<tr>
-			<td><%=rs.getString("code")%></td>
-			<td><%=rs.getString("sang")%></td>
-			<td><%=rs.getString("su")%></td>
-			<td><%=rs.getString("dan")%></td>
-		</tr>
-<%	
+	<%
+		try{
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+	%>
+	<tr>
+		<td><%=rs.getString("code")%></td>
+		<td><%=rs.getString("sang")%></td>
+		<td><%=rs.getString("su")%></td>
+		<td><%=rs.getString("dan")%></td>
+	</tr>
+	<%	
+			}
+		}catch(Exception e){
+			out.println("실행 에러" + e);
+		}finally{
+			rs.close();
+			pstmt.close();
+			conn.close();
 		}
-	}catch(Exception e){
-		out.println("실행 에러" + e);
-	}finally{
-		rs.close();
-		pstmt.close();
-		conn.close();
-	}
-%>
+	%>
 </table>
 </body>
 </html>
