@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev">
+	<select id="selectJikwonAll" parameterType="exam.business.JikwonFormbean" resultType="exam.business.JikwonDto">
+		select jikwon_no, jikwon_name, jikwon_jik, jikwon_gen, jikwon_pay from jikwon where jikwon_jik=#{jik1} or jikwon_jik=#{jik2}
+	</select>
+	
+	<select id="selectJikwonPay" resultType="exam.business.JikwonPayDto">
+		select jikwon_jik, count(jikwon_no) as jsu, sum(jikwon_pay) as jsum, avg(jikwon_pay) as javg from jikwon group by jikwon_jik
+	</select>
+	
+	
+	
+	
+	
+	<select id="selectJikwonSu" parameterType="string" resultType="exam.business.JikwonPayDto">
+		select jikwon_jik, count(jikwon_no) as jsu, sum(jikwon_pay) as jsum, avg(jikwon_pay) as javg from jikwon where jikwon_jik=#{jikwon_jik} group by jikwon_jik
+	</select>
+</mapper>
