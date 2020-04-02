@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		
+	<!-- 
+	<bean id="senderProcess" class="pack.autowired.SenderProcess">
+		<property name="sender" >
+			<bean class="pack.autowired.Sender" />
+		</property>
+	</bean>
+	 -->
+	 
+	 
+	 <!-- <context:annotation-config /> --><!-- 어노테이션 쓰겠다고 명시하고 밑에 쓰지 않으면 인식이 안됨, scan을 썼다면 annotation-config도 쓸 필요는 없음 -->
+	 <context:component-scan base-package="pack.autowired" /> <!-- pack.autowired위치의 파일들에 어노테이션을 걸었으니 스캔을 하도록 지시, 다른 패키지에도 있다면 더 적어주도록 함. -->
+	 <!-- <context:component-scan base-package="pack.autowired2" /> -->
+	 
+	 
+	 <!-- 
+	 <bean id="senderProcess" class="pack.autowired.SenderProcess" />
+	 <bean id="senderProcess2" class="pack.autowired.SenderProcess2" />
+	  -->
+	 <!-- <bean id="s1" class="pack.autowired.Sender" /> --> <!-- bean을 만들어 둬야 연결시켜줌,  타입에 의한 매핑이기 때문에 id를 안 써도 됨-->
+	 <!-- <bean id="s2" class="pack.autowired.Sender2" /> --> <!-- 이거를 추가함으로써 senderinter의 자식 클래스가 2개가 됨, 그래서 processs2가 어느 것을 인젝션할지 모르기때문에 에러가 발생하게됨 -->
+	 <!-- 그래서 autowired와 같이 쓰이는 어노테이션이 Qualifier 를 쓰면서 id를 추가-->
+	 
+	 
+	 <!-- !!!!! 아무리 어노테이션을 다 써줘도 xml 파일에 써진 것이 우선 !!!!! -->
+</beans>

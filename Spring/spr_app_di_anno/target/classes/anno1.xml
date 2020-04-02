@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- 일반적, property 설정해주지 않아도 실행은 됨, 0으로 나옴 
+	<bean id="abc" class="pack.required.Abc">
+		
+	</bean>
+	 -->
+	 
+	 <!-- @Required 를 썼다는 것을 xml에 알려주어야 적용됨 -->
+	 <!-- 이렇게 쓰면 되지만 어노테이션이 너무 길어서 간편하게 쓰기 위한 것이 context: 
+	 <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
+	  -->
+	 <context:annotation-config />
+	 <bean id="abc" class="pack.required.Abc">
+	 	<property name="number" value="10" />
+	 </bean>
+</beans>

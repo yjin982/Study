@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<bean id="messageImpl" class="pack.MessageImpl" scope="singleton"
+	    c:name1="안녕" c:name2="도사" c:year="1000" c:myInfo-ref="mf"
+		p:spec="정보처리" p:myInfo2-ref="info" p:fileInter-ref="outFileImpl">
+		<!-- 생성자 주입 -->
+		<!-- 생성자에 인자가 있을때, index가 매핑 순서 안 적어주면 순서대로  -->
+		<!-- 1번째 방법 : 
+		<constructor-arg index="1"> 
+			<value>홍길동</value>
+		</constructor-arg>
+		<constructor-arg index="0">
+			<value>도사</value>
+		</constructor-arg>
+		 -->
+		 <!-- 2번째 방법 : 
+		 <constructor-arg index="0" type="java.lang.String" value="한국인" />
+		 <constructor-arg index="1" type="String" value="도사" />
+		 <constructor-arg index="2" type="int" value="2000" />
+		 <constructor-arg index="3" type="pack.MyInfo" ref="mf"/>
+		  --> 
+		 <!-- MyInfo의 슈퍼클래스가 있을 경우 type에 MyInfoInter를 넣을 수 있음..? -->
+		 <!-- 3번째 방법 : 네임스페이스를 이용(scope 뒤에 c: 으로 이어진 부분) -->
+		 
+		 
+		 <!-- property 주입 -->
+		 <!-- 1번째 방법 : name의 spec는 private 변수가 아니라 setSpec을 부르는 것 -->
+		 <!-- 
+		 <property name="spec">
+		 	<value>정보처리 자격증</value>
+		 </property>
+		 <property name="myInfo2">
+		 	<ref bean="info"/>
+		 </property>
+		 <property name="fileInter">
+		 	<ref bean="outFileImpl"/>
+		 </property>
+		  -->
+		  <!-- 2번째 방법 : 네임스페이스 이용 -->
+	</bean>
+	
+	<bean class="pack.MyInfo" name="info,myinfo,mf" />
+	<bean class="other.OutFileImpl" id="outFileImpl">
+		<property name="filePath" value="c:\work\wow.txt" />
+	</bean>
+</beans>
