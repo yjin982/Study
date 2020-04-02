@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 핵심 로직 : AOP 입장에서는 target class -->
+	<bean id="messageImpl" class="pack.MessageImpl" >
+		<property name="name" value="신기해" />
+	</bean>
+	
+	<!-- Advice(Aspect)로 target 클래스에  weaving-->
+	<bean id="loggingAdvice" class="other.LoggingAdvice" />
+	
+	<!-- proxy를 통한 간접 접근 -->
+	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean" >
+		<property name="target">
+			<ref bean="messageImpl"/>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>hiAdvisor</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- advisor(Advice + pointcut) (=list안에 들어갈 목록) -->
+	<bean id="hiAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice">
+			<ref bean="loggingAdvice"/>
+		</property>
+		<property name="pointcut">
+			<bean class="org.springframework.aop.support.JdkRegexpMethodPointcut"> <!-- 정규표현식을 이용 -->
+				<property name="pattern">
+					<value>.*sayHi*.</value> <!-- 패키지에 상관없이 현재프로젝트 어디든 sayHi가 포함된 곳, 이 Interceptor의 대상 -->
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+</beans>
