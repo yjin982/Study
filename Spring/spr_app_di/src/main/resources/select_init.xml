@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- constructor injection -->
+	<bean id="selectServiceImpl" class="pack.controller.SelectServiceImpl" >
+		<constructor-arg>
+			<ref bean="dataDaoImpl"/> <!-- 생성자에다가 인자를 넣은 경우 -->
+		</constructor-arg>
+	</bean>
+
+	<bean id="dataDaoImpl" class="pack.model1.DataDaoImpl" />
+</beans>

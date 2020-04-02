@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 이 방식이 아니라 namespace를 써도 됨 
+	<bean id="myProcess" class="pack.controller.MyProcess">
+		<constructor-arg>
+			<ref bean="moneyCalc" /> 이거 혹은
+			<ref bean="mbc" />이걸로
+		</constructor-arg>
+	</bean>
+	 -->
+	 
+	<!-- namespace -->
+	<bean id="myProcess" class="pack.controller.MyProcess" c:inter-ref="moneyCalc" />
+	
+	<bean id="moneyCalc" name="kbs,mbc,sbs" class="pack.model1.MoneyCalc" /> <!-- id나 name 써도 되지만 id는 한개밖에 안됨 -->
+</beans>

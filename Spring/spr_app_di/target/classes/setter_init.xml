@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 방법 1 : 일반적인 setter-->
+	<!-- 
+	<bean id="setterProcess" class="pack.controller.SetterProcess" >
+		<property name="nai" value="23" />
+		<property name="setterShowData" ref="setterShowData" />
+	</bean>
+	
+	<bean id="setterShowData" class="pack.model1.SetterShowData" />
+	 -->
+	
+	<!-- 방법 2 :  일반적인 setter에서 value를 하위 엘리먼트로 넣기-->
+	<!-- 
+	<bean id="setterProcess" class="pack.controller.SetterProcess" >
+		<property name="nai" >
+			<value>25</value>
+		</property>
+		<property name="setterShowData">
+			<bean class="pack.model1.SetterShowData" /> 
+		</property>
+	</bean>
+	 -->
+	 <!-- 25라인=밖에 bean을 두고 ref하면 다른 빈에서도 사용가능, 이렇게 하면 이 빈만 사용 가능 -->
+	 
+	 
+	<!-- 방법 3 : namespace -->
+	<bean id="setterProcess" class="pack.controller.SetterProcess" p:nai="27" p:setterShowData-ref="setterShowData"/>
+	<bean id="setterShowData" class="pack.model1.SetterShowData" />
+	
+</beans>
