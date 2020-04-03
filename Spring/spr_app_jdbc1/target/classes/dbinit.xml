@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- 데이터 연결정보 : DbDataSource.java를 작성함으로써 필요없어짐 -->
+	<!-- 
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName">
+			<value>org.mariadb.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:mysql://localhost:3306/test</value>
+		</property>
+		<property name="username">
+			<value>root</value>
+		</property>
+		<property name="password">
+			<value>123</value>
+		</property>
+	</bean>
+	 -->
+	<!-- model -->
+	<bean id="dataSource" class="pack.DbDataSource" />
+	<bean id="sangpumImpl" class="pack.SangpumImpl">
+		<property name="dataSource"  ref="dataSource" />
+	</bean>
+	
+	<!-- Biz -->
+	<bean id="businessImpl" class="pack.BusinessImpl">
+		<property name="sangpumInter" ref="sangpumImpl" />
+	</bean>
+</beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 비즈니스 로직 객체 생성 -->
+	<bean id="logicImpl" class="pack2.LogicImpl">
+		<constructor-arg>
+			<ref bean="articleDAO"/>
+		</constructor-arg>
+	</bean>
+	<bean id="articleDAO" class="pack2.ArticleDAO" />
+	
+	<!-- AOP 설정 -->
+	<bean id="myAspect" class="pack2.MyAspect" />
+	<aop:config>
+		<aop:aspect ref="myAspect">
+			<aop:pointcut expression="execution(public * pack2..*(..))" id="pointcut" /> <!-- pack2 패키지에 있는 public인 모든 리턴타입의 모든 메소드(..모든 파라미터)  -->
+			<aop:around method="kbs" pointcut-ref="pointcut"/>		
+		</aop:aspect>
+	</aop:config>
+</beans>

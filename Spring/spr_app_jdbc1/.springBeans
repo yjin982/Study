@@ -7,10 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>src/main/resources/aop_init.xml</config>
-		<config>src/main/resources/aop_init2.xml</config>
-		<config>src/main/resources/aop_init4.xml</config>
-		<config>src/main/resources/aop_init3.xml</config>
+		<config>src/main/resources/dbinit.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
