@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>1</title>
+<script type="text/javascript">
+function func(){
+	f.action="happy.do"; 
+	f.method="post";  //POST방식
+	f.submit();
+}
+</script>
+</head>
+<body>
+annotation<br>
+<a href="hello.do">Hello - get</a> 
+<form action="hello.do" method="post">
+	<input type="submit" value="post로 hello 요청">
+</form>
+<br>
+<a href="world.do">World! - get</a>
+<form action="world.do" method="post">
+	<input type="submit" value="post로 world 요청">
+</form>
+
+<br><hr>
+<a href="good.do">good.do</a>
+<a href="nice.do">nice.do</a>
+<a href="day.do">day.do</a>
+<a href="nice1.do">nice.do</a>
+<a href="nicekorea.do">nice.do</a>
+<br><hr><br>
+
+<a href="happy.do">happy</a> - a태그, 기본 get 
+<a href="javascript:func();">happy</a> - a태그 쓰면서 post로 받기
+<form name="f"></form>
+</body>
+</html>
