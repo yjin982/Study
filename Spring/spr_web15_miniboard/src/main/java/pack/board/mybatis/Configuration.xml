@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type="pack.board.model.BoardDto" alias="dto"/>
+		<typeAlias type="pack.board.controller.BoardBean" alias="bean"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="pack/board/mybatis/DataMapper.xml" />
+		<!-- datamapper 여러개 사용 가능 -->
+	</mappers>
+</configuration>
