@@ -14,17 +14,17 @@ public class UpdateController {
 	private BoardDaoImpl dao;
 	
 	@RequestMapping(value = "upfrm", method = RequestMethod.POST)
-	public ModelAndView update(BoardBean bean) {
+	public ModelAndView update(BoardBean bean) { //수정 폼으로 이동
 		return new ModelAndView("upform", "data", bean);
 	}
 	
 	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String submit(BoardBean bean) {
+	public String submit(BoardBean bean) { //수정 진행
 		int re = dao.updateData(bean);
 		
 		if(re > 0)
-			return "redirect:/boardlist";  ////추가 후 목록보기 요청
+			return "redirect:/boardlist";
 		else
-			return "error";	//// forwarding으로 error.jsp 호출
+			return "error";
 	}
 }
