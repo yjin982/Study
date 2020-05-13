@@ -2,7 +2,7 @@
 import threading, socket
 
 ss = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-ss.bind(('192.168.0.61', 7777))
+ss.bind(('127.0.0.1', 7777))
 ss.listen(5)
 print('chat server service ... ')
 
