@@ -11,7 +11,7 @@ sys.stdout.flush() #버퍼 비우기
 
 name = input('채팅 아이디 입력 :')
 cs = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-cs.connect(('192.168.0.61', 7777))
+cs.connect(('127.0.0.1', 7777))
 cs.send(name.encode('utf-8')) #대화명 전송
 
 th = threading.Thread(target=Handle, args=(cs, ))
