@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		{% extends 'layout.html' %}
+		{% block content %}
+		<h3>상품 자료</h3>
+		{% if articles.count > 0 %}
+			{% for a in articles %}
+				<div>
+					<span><b>{{a.code}}</b></span>
+					<span>{{a.sang}}</span>
+					<span>{{a.price}}</span>
+					<span>{{a.pub_date}}</span>
+				</div>
+			{% endfor %}
+		{% else %}
+			자료가 없습니다<p/>
+		{% endif %}
+		{% endblock %}
+	</body>
+</html>

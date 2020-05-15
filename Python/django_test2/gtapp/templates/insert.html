@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		자료 입력<p/>
+		<form action="/gtapp/insert" method="post">{% csrf_token %} <!-- csrf 보안을 위해서 form태그 옆에 적어주기 -->
+			이름 : <input type="text" name="name"> 
+			<input type="submit" value="확인"><p/>
+		</form>
+	</body>
+</html>
