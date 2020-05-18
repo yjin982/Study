@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h4>글목록</h4>
+		<a href="insert">글 작성</a><p/>
+		<!-- 같은 방식   <a href="/guest/insert">글 작성</a> -->
+		<!-- 얘는 다름   <a href="guest/insert">글 작성</a> -->
+		<table border="1" style="border-collapse: collapse;">
+			<tr><th>ID</th><th>글제목</th><th>글내용</th><th>등록일</th></tr>
+			{% for g in gdata %}
+			<tr>
+				<td>{{g.id}}</td>
+				<td>{{g.title}}</td>
+				<td>{{g.content}}</td>
+				<td>{{g.regdate}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>

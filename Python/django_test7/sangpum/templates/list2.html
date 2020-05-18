@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h3>상품 전체 목록</h3>
+		<table style="width: 500px;">
+			<tr><th>아이디</th><th>상품명</th><th>가격</th><th>제조사</th></tr>
+			{% for p in products %}
+			<tr>
+				<td>{{p.id}}</td>
+				<td>{{p.pname}}</td>
+				<td>{{p.price}}</td>
+				<td>{{p.maker_name}}</td>
+			</tr>
+			{% endfor %}
+			<tr><td colspan="4" style="text-align: right;">건수 : {{pcount}}</td></tr>
+		</table>
+	</body>
+</html>
