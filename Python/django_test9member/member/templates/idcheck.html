@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		{% if isReg %}
+			<p>{{memid}}는 이미 등록된 아이디입니다. 다른 아이디를 써주세요</p>
+			<a href="#" onclick="opener.document.regForm.memid.focus(); window.close();">닫기</a>		
+		{% else %}
+			<p>{{memid}}는 사용 가능한 아이디입니다.</p>
+			<a href="#" onclick="opener.document.regForm.passwd.focus(); window.close();">닫기</a>
+		{% endif %}
+	</body>
+</html>

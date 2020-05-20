@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link href="/static/css/style.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<script src="/static/js/script.js" ></script>
+	</head>
+	<body>
+		<h2>회원 목록</h2>
+		<a href="/member/insert">회원 등록</a><p/>
+		<table class="table table-hover">
+			<tr>
+				<th>아이디</th><th>회원 아이디</th><th>회원명</th><th>전화</th><th>이메일</th><th>우편번호</th><th>주소</th><th>직업</th>
+			</tr>
+			{% if members.count > 0 %}
+				{% for m in members %}
+				<tr>
+					<td>{{m.id}}</td>
+					<td>{{m.memid}}</td>
+					<td>{{m.name}}</td>
+					<td>{{m.phone}}</td>
+					<td>{{m.email}}</td>
+					<td>{{m.zipcode}}</td>
+					<td>{{m.address}}</td>
+					<td>{{m.job}}</td>
+				</tr>				
+				{% endfor %}
+			{% else %}
+			<tr><td colspan="8">회원 자료가 없습니다.</td></tr>
+			{% endif %}
+		</table>
+	</body>
+</html>
