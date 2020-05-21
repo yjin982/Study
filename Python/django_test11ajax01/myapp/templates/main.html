@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#btn1').click(function(){
+					let msg = $('#txtmsg').val()
+					
+					$("#showData1").empty()
+					$.ajax({
+						url:'startajax',
+						type:'get',
+						data:{'msg':msg},
+						dataType:'json',
+						success:function(data){
+							$('#showData1').text(data.key)
+							$('#showData1').text(data['key'])
+							
+							/*
+							for(let k in data){
+								var str = k + "<br>" + data[k]
+							}
+							$('#showData1').html(str)
+							*/
+						},
+						error:function(){
+							$('#showData1').text('ERROR!!!🤦‍♂️')
+						}
+					})
+				})
+			})
+		</script>
+	</head>
+	<body>
+		Ajax 연습 in Django<p/>
+		자료 입력 : <input type="text" id="txtmsg" value="홍길동">
+		<button id="btn1">click1</button><p/>
+		<div id="showData1">실습 1 결과보기</div>
+	</body>
+</html>
