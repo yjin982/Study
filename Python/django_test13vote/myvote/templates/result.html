@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+	<h3>{{question.question_text}}</h3>
+	결과 :
+	<ul>
+	{% for choice in question.choise_set.all %}
+		<li>
+			{{ choice.choice_text }} - {{ choice.votes }}표
+		</li>
+	{% endfor %}
+	</ul><p/>
+	<a href="{% url 'detail' question.id %}">같은 항목 투표하기</a><p/>
+	<a href="/govote">투표 초기화면</a><p/>
+	</body>
+</html>

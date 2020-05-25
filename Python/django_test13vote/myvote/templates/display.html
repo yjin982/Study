@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h3>투표할 질문 선택</h3>
+		{% if q_list%}
+			<ul>
+			{% for q in q_list %}
+				<li>
+					{#<a href="/govote/{{q.id}}">{{q.question_text}}</a> 기존 방법 : 하드코딩 #}
+					<a href="{% url 'detail' q.id %}">{{q.question_text}}</a>
+				</li>
+			{% endfor %}
+			</ul>
+		{% else %}
+			<p>질문 항목이 없어 투표를 할 수가 없습니다. </p>
+		{% endif %}
+	</body>
+</html>

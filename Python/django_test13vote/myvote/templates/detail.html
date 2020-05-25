@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+	<h3>{{question.question_text}}</h3>
+	{# /gobote/1/vote #}
+	{% if error_msg %}
+		<b style="">{{error_msg}}</b>
+	{% endif %}
+	
+	<form action="{% url 'vote' question.id %}" method="post"> {% csrf_token %} 
+		{% for choice in question.choise_set.all %}   <!-- <= py의 question.choice_set.all()  -->
+			<input type="radio" name="choice" id="choice{{forloop.counter}}" value="{{choice.id}}">
+			<label for="choice{{forloop.counter}}">{{choice.choice_text}}</label>
+		{% endfor %} <p/>
+		<input type="submit" value="투표확인">
+	</form>
+	</body>
+</html>
