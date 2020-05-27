@@ -3,7 +3,6 @@
 '''
 from pandas import Series
 import numpy as np
-from pandas.tests.frame.test_sort_values_level_as_str import ascending
 
 obj = Series([3, 7, -5, 4])
 obj = Series((3, 7, -5, 4))
