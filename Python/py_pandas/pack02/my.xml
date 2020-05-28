@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<items>
+	<item>
+		<name id="ks1">중규</name>
+		<tel>111-1111</tel>
+		<exam kor="100" eng="90"/>
+	</item>
+	<item>
+		<name id="ks2">웅대</name>
+		<tel>222-2222</tel>
+		<exam kor="80" eng="85"/>
+	</item>	
+	<item>
+		<name id="ks3">경자</name>
+		<tel>333-3333</tel>
+		<exam kor="60" eng="95"/>
+	</item>	
+</items>
