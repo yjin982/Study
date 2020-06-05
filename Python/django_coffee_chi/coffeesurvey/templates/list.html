@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<h3>커피전문점에 대한 소비자 인식조사 결과</h3>
+		<p>
+			{% if crossTab %}
+				{{crossTab|safe}}
+			{% endif %}
+		</p>
+		<p>
+			<img src="/static/images/vbar.png" width="500">
+		</p>
+		<hr>
+		<p>{{result}}</p>
+		<p><a href="/">다시 설문조사 하기</a></p>
+		<p>
+			{% if df %}
+				{{df|safe}}
+			{% endif %}
+		</p>
+	</body>
+</html>
