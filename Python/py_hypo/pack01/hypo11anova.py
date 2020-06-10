@@ -73,7 +73,7 @@ print(table) # PR(>F) <= pvalue 0.727597 > 0.05 귀무 채택
 # reg2 = ols(formula='data["score"] ~ data["method"] + data["survey"]', data=data).fit() # 다중 선형 회귀 모델 작성
 # table2 = sm.stats.anova_lm(reg2, type=1) #type은 1 또는 2, 3이 가능
 # print(table2) # PR(>F) <= pvalue 0.727597 > 0.05 귀무 채택
-#df자유도        sum_sq제곱합 SSR     mean_sq제곱평균 MSR        F    PR(>F)
+# df자유도        sum_sq제곱합 SSR     mean_sq제곱평균 MSR        F    PR(>F)
 ''' https://kkokkilkon.tistory.com/77 '''
 
 
