@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript">
+		function submit_enter(event){
+			var timeval = document.getElementById('gameT')
+			if(timeval.value.length == 0){
+				alert('게임 사용 시간을 입력해주세요.')
+				return false;
+			}
+			gsform.submit()
+		}
+		</script>
+	</head>
+	<body>
+		<form action="./result" method="post" name="gsform" onsubmit="return false;"> {% csrf_token %}
+			1. 귀하의 직업은?<p/>
+			<label for="jobW">화이트칼라</label>
+			<input type="radio" id="jobW" name="job" value="화이트칼라" checked="checked">&emsp;&emsp;
+			
+			<label for="jobB">블루칼라</label>
+			<input type="radio" id="jobB" name="job" value="블루칼라">&emsp;&emsp;
+			
+			<label for="jobS">학생</label>
+			<input type="radio" id="jobS" name="job" value="학생">&emsp;&emsp;
+			
+			<label for="jobE">기타</label>
+			<input type="radio" id="jobE" name="job" value="기타">
+			<p/><br>
+			
+			2. 귀하의 성별은?<p/>
+			<label for="genM">남자</label>
+			<input type="radio" id="genM" name="gender" value="남자" checked="checked">&emsp;&emsp;
+			
+			<label for="genF">여자</label>
+			<input type="radio" id="genF" name="gender" value="여자">
+			<p/><br>
+			
+			3. 귀하의 하루 평균 게임 사용 시간은? (예: 1.5, 0.5, 3.0)<p/>
+			<input type="text" id="gameT" name="game_time" onkeypress="if(event.keyCode == 13) submit_enter(this);">
+		</form>
+		<h4>엔터를 치시면 설문결과가 전송됩니다.</h4>
+	</body>
+</html>

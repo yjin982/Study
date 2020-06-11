@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<a href="gosurvey">설문하기</a><p/>
+		<a href="result">설문 결과</a>
+		{% if messages %}
+			{% for message in messages %}
+				<h3>{{ message.message }}</h3>
+			{% endfor %}
+		{% endif %}<p/>
+	</body>
+</html>

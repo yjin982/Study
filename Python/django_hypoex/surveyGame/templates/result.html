@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+	</head>
+	<body>
+	{% load static from static %}
+	<h4>검정 1 : 성별에 따라 게임 사용시간 평균에 차이가 있는가?</h4><p/>
+	귀무가설 : 성별에 따라 게임 사용시간 평균에 차이가 없다.<br>
+	대립가설 : 성별에 따라 게임 사용시간 평균에 차이가 있다. <p/>
+	{% if ttest > 0.05 %}
+		T test의 P value({{ttest}})가 0.05보다 크므로 귀무 가설을 채택한다. <br>
+	{% else %}
+		T test의 P value({{ttest}})가 0.05보다 크므로 귀무 가설을 기각한다. <br>
+	{% endif %}
+	<img src="{% static 'images/ttest.png' %}">
+	<p/><br>
+	
+	<h4>검정 2 : 직업에 따라  게임 사용시간 평균에 차이가 있는가?</h4><p/>
+	귀무가설 : 직업에 따라 게임 사용시간 평균에 차이가 없다.<br>
+	대립가설 : 직업에 따라 게임 사용시간 평균에 차이가 있다. <p/>
+	{% if ftest > 0.05 %}
+		F test의 P value({{ftest}})가 0.05보다 크므로 귀무 가설을 채택한다. <br>
+	{% else %}
+		F test의 P value({{ftest}})가 0.05보다 크므로 귀무 가설을 기각한다. <br>
+	{% endif %}
+	<img src="{% static 'images/ftest.png' %}">
+	<p/><br>
+	<a href="/">홈으로</a>
+	</body>
+</html>
