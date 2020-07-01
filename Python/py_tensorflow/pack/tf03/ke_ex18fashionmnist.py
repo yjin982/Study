@@ -1,5 +1,5 @@
 '''
-    fashion MNIST dataset 손글씨 이미지 분류 예측
+    fashion MNIST dataset 이미지 분류 예측
 '''
 import tensorflow as tf
 
